@@ -1,0 +1,8 @@
+- create project on github
+- git init 
+- git remote add origin link.github
+- composer create-project --prefer-dist laravel/laravel NameProject "5.8.*"
+- edit laravel:
+    move public
+- Chuyển toàn bộ file trong public ra ngoài để có thể chạy được va che dấu các đường dẫn
+- create migration
