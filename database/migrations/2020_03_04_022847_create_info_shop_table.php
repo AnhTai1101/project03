@@ -15,6 +15,11 @@ class CreateInfoShopTable extends Migration
     {
         Schema::create('info_shop', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('name', 100);
+            $table->string('bossName', 100);
+            $table->string('address', 100);
+            $table->integer('phone1')->default(15);
+            $table->integer('phone2')->default(15);
             $table->timestamps();
         });
     }

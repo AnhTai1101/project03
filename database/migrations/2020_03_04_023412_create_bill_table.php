@@ -15,6 +15,12 @@ class CreateBillTable extends Migration
     {
         Schema::create('bill', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->unsignedBigInteger('customer_id');
+            $table->foreign('customer_id')->references('id')->on('customer')->onDelete('cascade');
+            $table->date('date_order');
+            $table->integer('total');
+            $table->text('note');
+            $table->string('payment', 100);
             $table->timestamps();
         });
     }
