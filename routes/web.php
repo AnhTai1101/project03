@@ -15,4 +15,8 @@ Route::group(['namespace' => 'frontend'], function () {
         'as'=>'home',
         'uses'=>'homeController@home'
     ]);
+    Route::get('test', 'homeController@test');
+});
+Route::get('pass', function () {
+    echo bcrypt(123);
 });

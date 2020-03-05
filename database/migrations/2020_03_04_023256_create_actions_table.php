@@ -19,7 +19,6 @@ class CreateActionsTable extends Migration
             $table->unsignedBigInteger('role_id');
             $table->foreign('action_id')->references('id')->on('action')->onDelete('cascade');
             $table->foreign('role_id')->references('id')->on('role')->onDelete('cascade');
-            $table->string('name', 100);
             $table->timestamps();
         });
     }
