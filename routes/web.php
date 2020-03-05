@@ -20,3 +20,28 @@ Route::group(['namespace' => 'frontend'], function () {
 Route::get('pass', function () {
     echo bcrypt(123);
 });
+Route::group(['namespace' => 'Admin'], function () {
+    Route::group(['prefix' => 'admin'], function () {
+        Route::get('Trangchu.html', [
+            'as'=>'trangchu',
+            'uses'=>'HomeController@home'
+        ]);
+        Route::group(['prefix' => 'Product'], function () {
+            Route::get('home-product.html', [
+                'as'=>'home-product',
+                'uses'=>'ProductController@home'
+            ]);
+        });
+        Route::group(['prefix' => 'Category'], function () {
+            Route::get('home-category.html', [
+                'as'=>'home-category',
+                'uses'=>'CategoryController@home'
+            ]);
+        });
+        
+    });
+    Route::get('logout', [
+        'as'=>'logout',
+        'uses'=>'HomeController@logout'
+    ]);
+});
