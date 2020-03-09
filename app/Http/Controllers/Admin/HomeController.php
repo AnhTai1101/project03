@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Product;
 use Auth;
+use App\Http\Requests\LoginRequest;
 
 class HomeController extends Controller
 {
@@ -22,29 +23,13 @@ class HomeController extends Controller
     {
         return view('backend.login');
     }
-    public function PostLogin(Request $req){
-        $this->validate($req,
-            [
-                'email'=>'required|email',
-                'password'=>'required|min:6|max:20'
-            ],
-            [
-                'email.required'=>'Vui lòng nhập email',
-                'email.email'=>'Phải đúng định dạng email',
-                'password.required'=>'Không được để trống mật khẩu!',
-                'password.min'=>'Mật khẩu phải lớn hơn 6 ký tự',
-                'password.max'=>'Mật khẩu bé hơn 20 ký tự'
-            ]
-        );
-        $user = array([
-            'email'=>$red->email,
-            'password'=>$req->password
-        ]);
-        if(Auth::attempt($user)){
-            return redirect()->back()->with('thongbao', 'Đăng nhập thành công.');
-        }
-        else{
-            return redirect()->back()->with('thongbao', 'Đăng nhập thất bại!');
+    public function PostLogin(LoginRequest $req){
+        $email = $req->email;
+        $password = $req->password;
+        if(Auth::attempt(['email' => $email, 'password' => $password])){
+            return redirect(route('trangchu'));
+        }else {
+            return redirect()->back()->with('thatbai','Tài khoản hoặc mật khẩu không chính xác.');
         }
     }
 }

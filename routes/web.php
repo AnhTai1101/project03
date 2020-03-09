@@ -18,7 +18,7 @@ Route::group(['namespace' => 'frontend'], function () {
     Route::get('test', 'homeController@test');
 });
 Route::get('pass', function () {
-    echo bcrypt(123);
+    echo bcrypt(123456);
 });
 Route::group(['namespace' => 'Admin'], function () {
     Route::group(['prefix' => 'admin','middleware'=>'LoginAdmin'], function () {

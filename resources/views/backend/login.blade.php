@@ -14,13 +14,33 @@
                         <div class="login-form">
                             <form action="{{ route('login') }}" method="post">
                                 @csrf
+                                @if (Session('thongbao'))
+                                    <div class="alert alert-danger">
+                                        {{ Session('thongbao') }}
+                                    </div>
+                                @endif
+                                @if (Session('thatbai'))
+                                    <div class="alert alert-danger">
+                                        {{ Session('thatbai') }}
+                                    </div>
+                                @endif
                                 <div class="form-group">
                                     <label>Email Address</label>
                                     <input class="au-input au-input--full" type="email" name="email" placeholder="Email">
+                                    @if ($errors->has('email'))
+                                        <div class="alert alert-danger">
+                                            <strong>{{ $errors->first('email') }}</strong>
+                                        </div>
+                                    @endif
                                 </div>
                                 <div class="form-group">
                                     <label>Password</label>
                                     <input class="au-input au-input--full" type="password" name="password" placeholder="Password">
+                                    @if ($errors->has('password'))
+                                        <div class="alert alert-danger">
+                                            <strong>{{ $errors->first('password') }}</strong>
+                                        </div>
+                                    @endif
                                 </div>
                                 {{-- <div class="login-checkbox">
                                     <label>
