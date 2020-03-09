@@ -30,5 +30,6 @@
 
     <!-- Main CSS-->
     <link href="public/backend/css/theme.css" rel="stylesheet" media="all">
+    <link rel="stylesheet" href="public/backend/css/style.css">
 
 </head>

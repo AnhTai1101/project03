@@ -11,4 +11,8 @@ class CategoryController extends Controller
     {
         return view('backend\Category\HomeCategory');
     }
+    public function add()
+    {
+        return view('backend\Category\add_category');
+    }
 }

@@ -21,13 +21,21 @@ Route::get('pass', function () {
     echo bcrypt(123);
 });
 Route::group(['namespace' => 'Admin'], function () {
-    Route::group(['prefix' => 'admin'], function () {
+    Route::group(['prefix' => 'admin','middleware'=>'LoginAdmin'], function () {
         Route::get('Trangchu.html', [
+            'as'=>'trangchu',
+            'uses'=>'HomeController@home'
+        ]);
+        Route::get('/', [
             'as'=>'trangchu',
             'uses'=>'HomeController@home'
         ]);
         Route::group(['prefix' => 'Product'], function () {
             Route::get('home-product.html', [
+                'as'=>'home-product',
+                'uses'=>'ProductController@home'
+            ]);
+            Route::get('/', [
                 'as'=>'home-product',
                 'uses'=>'ProductController@home'
             ]);
@@ -37,11 +45,25 @@ Route::group(['namespace' => 'Admin'], function () {
                 'as'=>'home-category',
                 'uses'=>'CategoryController@home'
             ]);
+
+            Route::get('add-category.html', [
+                'as'=>'add-category',
+                'uses'=>'CategoryController@add'
+            ]);
+
         });
-        
+
     });
     Route::get('logout', [
         'as'=>'logout',
         'uses'=>'HomeController@logout'
+    ]);
+    Route::get('login', [
+        'as'=>'login',
+        'uses'=>'HomeController@login'
+    ]);
+    Route::post('login', [
+        'as'=>'login',
+        'uses'=>'HomeController@PostLogin'
     ]);
 });
