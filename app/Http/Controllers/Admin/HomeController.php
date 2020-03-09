@@ -17,7 +17,8 @@ class HomeController extends Controller
     }
     public function logout()
     {
-        echo 'logout';
+       Auth::logout();
+       return redirect(route('home'));
     }
     public function login()
     {
