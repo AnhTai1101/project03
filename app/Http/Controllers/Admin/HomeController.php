@@ -7,13 +7,23 @@ use App\Http\Controllers\Controller;
 use App\Product;
 use Auth;
 use App\Http\Requests\LoginRequest;
+use App\Product_Quantity;
+use App\Users;
 
 class HomeController extends Controller
 {
     public function home()
     {
+        $user = Auth::user();
         $products = Product::paginate(10);
-        return view('backend.home',compact('products'));
+        $total = 0;
+        $product = Product::all();
+        foreach($product as $product1){
+            foreach($product1->ProductQuantity as $number){
+                $total += $number->quantity;
+            }
+        }
+        return view('backend.home',compact('products','total','user'));
     }
     public function logout()
     {

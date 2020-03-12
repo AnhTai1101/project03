@@ -39,6 +39,22 @@ Route::group(['namespace' => 'Admin'], function () {
                 'as'=>'home-product',
                 'uses'=>'ProductController@home'
             ]);
+            Route::get('add-product.html', [
+                'as'=>'add-product',
+                'uses'=>'ProductController@add'
+            ]);
+            Route::post('add-product.html', [
+                'as'=>'add-product',
+                'uses'=>'ProductController@go_add'
+            ]);
+            Route::get('edit-product.html', [
+                'as'=>'edit-product',
+                'uses'=>'ProductController@edit'
+            ]);
+            Route::get('delete-product/{id}', [
+                'as'=>'delete-product',
+                'uses'=>'ProductController@delete'
+            ]);
         });
         Route::group(['prefix' => 'Category'], function () {
             Route::get('home-category.html', [
@@ -49,6 +65,10 @@ Route::group(['namespace' => 'Admin'], function () {
             Route::get('add-category.html', [
                 'as'=>'add-category',
                 'uses'=>'CategoryController@add'
+            ]);
+            Route::get('edit-category.html', [
+                'as'=>'edit-category',
+                'uses'=>'CategoryController@edit'
             ]);
 
         });

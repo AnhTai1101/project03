@@ -1,7 +1,7 @@
 @extends('backend.master')
 @section('title','Trang danh sach san pham')
 @section('main')
-&nbsp;&nbsp;&nbsp;<button class="btn btn-success">Thêm</button>
+&nbsp;&nbsp;&nbsp;<a href="{{ route('add-product') }}"><button class="btn btn-success">Thêm</button></a>
 <div class="container">
 	<table id="cart" class="table table-hover table-condensed">
         <thead>
@@ -9,32 +9,39 @@
                 <th style="width:50%">Product</th>
                 <th style="width:10%">Price</th>
                 <th style="width:8%">Quantity</th>
-                <th style="width:22%" class="text-center">Subtotal</th>
-                <th style="width:10%"></th>
+                <th style="width:22%" class="text-center">Promotion</th>
+                <th style="width:10%">Action</th>
             </tr>
         </thead>
-        <tbody>
-            <tr>
-                <td data-th="Product">
-                    <div class="row">
-                        <div class="col-sm-2 hidden-xs"><img src="http://placehold.it/100x100" alt="..." class="img-responsive"/></div>
-                        <div class="col-sm-10">
-                            <h4 class="nomargin">Product 1</h4>
-                            <p>Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Lorem ipsum dolor sit amet.</p>
+        @foreach ($products as $product)
+            <tbody>
+                <tr>
+                    <td data-th="Product">
+                        <div class="row">
+                            <div class="col-sm-2 hidden-xs"><img src="public\images\{{ $product->image1 }}" alt="..." class="img-responsive"/></div>
+                            <div class="col-sm-10">
+                                <h4 class="nomargin">{{ $product->name }}</h4>
+                                <p>{{ $product->type->name }}</p>
+                            </div>
                         </div>
-                    </div>
-                </td>
-                <td data-th="Price">$1.99</td>
-                <td data-th="Quantity">
-                    <input type="number" class="form-control text-center" value="1">
-                </td>
-                <td data-th="Subtotal" class="text-center">1.99</td>
-                <td class="actions" data-th="">
-                    <button class="btn btn-info btn-sm"><i class="fa fa-refresh"></i></button>
-                    <button class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i></button>								
-                </td>
-            </tr>
-        </tbody>
+                    </td>
+                    <td data-th="Price">{{ number_format($product->price_unit) }}</td>
+                    <td data-th="Quantity" class="text-center">
+                        {{ $product->Quantity }}
+                        {{-- <input type="number" class="form-control text-center" value="1"> --}}
+                    </td>
+                    <td data-th="Subtotal" class="text-center">{{ number_format($product->price_promotion) }}</td>
+                    <td class="actions" data-th="">
+                        <a href="{{ route('edit-product') }}">
+                            <button class="btn btn-info btn-sm"><i class="fa fa-refresh"></i></button>
+                        </a>
+                        <a href="{{ route('delete-product',$product->id) }}">
+                            <button class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i></button>
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        @endforeach
         {{-- <tfoot>
             <tr class="visible-xs">
                 <td class="text-center"><strong>Total 1.99</strong></td>

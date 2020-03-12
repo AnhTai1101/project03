@@ -14,22 +14,22 @@
                     <th style="width:10%"></th>
                 </tr>
             </thead>
-            @foreach ($products as $products)
+            @foreach ($products as $product)
                 <tbody>
                     <tr>
                         <td data-th="Product">
                             <div class="row">
-                                <div class="col-sm-2 hidden-xs"><img src="public/image/{{ $products->image1 }}" alt="..." class="img-responsive"/></div>
+                                <div class="col-sm-2 hidden-xs"><img src="public/images/{{ $product->image1 }}" alt="..." class="img-responsive"/></div>
                                 <div class="col-sm-10">
-                                    <h4 class="nomargin">{{ $products->name }}</h4>
-                                    <p>{{ $products->discription }}</p>
+                                    <h4 class="nomargin">{{ $product->name }}</h4>
+                                    <p>{{ $product->discription }}</p>
                                 </div>
                             </div>
                         </td>
-                        <td data-th="Price">{{ number_format($products->price_unit) }} .đ</td>
-                        <td data-th="Subtotal" class="text-center">{{ $products->price_promotion == 0 ? '0' : $products->price_promotion   }} .đ</td>
+                        <td data-th="Price">{{ number_format($product->price_unit) }} .đ</td>
+                        <td data-th="Subtotal" class="text-center">{{ $product->price_promotion == 0 ? '0' : $product->price_promotion   }} .đ</td>
                         <td data-th="Quantity">
-                            <input type="number" class="form-control text-center" value="">
+                            <input type="number" class="form-control text-center" value="{{ $total }}">
                         </td>
                         
                         <td class="actions" data-th="">
