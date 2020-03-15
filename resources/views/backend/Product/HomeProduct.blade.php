@@ -21,7 +21,7 @@
                             <div class="col-sm-2 hidden-xs"><img src="public\images\{{ $product->image1 }}" alt="..." class="img-responsive"/></div>
                             <div class="col-sm-10">
                                 <h4 class="nomargin">{{ $product->name }}</h4>
-                                <p>{{ $product->type->name }}</p>
+                                <p>Type:{{ $product->type->name }}, color: {{ $product->color->name }}, Size: {{ $product->size->name }}</p>
                             </div>
                         </div>
                     </td>
@@ -32,11 +32,11 @@
                     </td>
                     <td data-th="Subtotal" class="text-center">{{ number_format($product->price_promotion) }}</td>
                     <td class="actions" data-th="">
-                        <a href="{{ route('edit-product') }}">
+                        <a href="{{ route('edit-product',$product->id) }}">
                             <button class="btn btn-info btn-sm"><i class="fa fa-refresh"></i></button>
                         </a>
                         <a href="{{ route('delete-product',$product->id) }}">
-                            <button class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i></button>
+                            <button class="btn btn-danger btn-sm"><i class="fa fa-trash" aria-hidden="true"></i></button>
                         </a>
                     </td>
                 </tr>

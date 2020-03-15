@@ -27,8 +27,9 @@ class ValidateForm extends FormRequest
             'name'=>'required',
             'content'=>'required',
             'description'=>'required',
-            'price_unit'=>'required',
-            'quantity'=>'required'
+            'price_unit'=>'required|max:8',
+            'quantity'=>'required',
+            'file'=>'image|max:2024',
         ];
     }
     // public function messages()

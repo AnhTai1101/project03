@@ -1,13 +1,16 @@
 @extends('backend.master')
-@section('title','Thêm sản phẩm')
+@section('title','Sua sản phẩm')
 @section('main')
     <div class="container">
-        <form class="info-product" action="index.php?area=backend&controller=product&action=go_add" method="POST" enctype="multipart/form-data">
+        <form class="info-product" action="{{ route('go-edit-product') }}" method="POST" enctype="multipart/form-data">
             @csrf
             {{--  <div class="form-group">
                 <label for="id">ID sản phẩm</label>
                 <input type="number" class="form-control" id="">
             </div>  --}}
+            <div style="display:none">
+                <input type="number" name="id" value="{{ $product->id }}">
+            </div>
             <div class="form-group">
                 <label for="title">Tên sản phẩm</label>
                 <input type="text" class="form-control" id="title" name="name" value="{{ isset($product->name) ? $product->name : '' }}" >
@@ -18,7 +21,7 @@
             </div>
             <div class="form-group">
                 <label for="price">Giá khuyến mại:</label>
-                <input name="price_unit" value="{{ isset($product->price_promotion) ? $product->price_promotion : '' }}" type="number"> .đ
+                <input name="price_promotion" value="{{ isset($product->price_promotion) ? $product->price_promotion : '' }}" type="number"> .đ
             </div>
             <div class="form-group">
                 <label for="content">Thông tin giới thiệu</label>
@@ -82,7 +85,7 @@
             </div>
             <div class="form-group">
                 <label for="description">Chi tiết sản phẩm:</label>
-                <textarea name="description"  cols="60" rows="10"></textarea>
+                <textarea name="description"  cols="60" rows="10">{{ isset($product->description) ? $product->description : '' }}</textarea>
                 {{--  <input type="text" class="form-control" id="description" name="description">  --}}
             </div>
             <div class="row" style="margin-top:5px;">
@@ -91,7 +94,7 @@
                     <img src="public\images\{{ $product->image1 }}" alt="Ảnh chính">
                 </div>
                 <div class="col-md-10">
-                    <input type="file" name="image">
+                    <input type="file" name="image1">
                 </div>
             </div>
             <hr>
@@ -101,7 +104,7 @@
                     <img src="public\images\{{ $product->image2 }}" alt="Ảnh phụ 1">
                 </div>
                 <div class="col-md-10">
-                    <input type="file" name="image1">
+                    <input type="file" name="image2">
                 </div>
             </div>
             <hr>
@@ -114,7 +117,7 @@
                     <!-- <img src="" alt="Ảnh phụ 2"> -->
                 </div>
                 <div class="col-md-10">
-                    <input type="file" name="image2">
+                    <input type="file" name="image3">
                 </div>
             </div>
             <!-- <div class="checkbox">

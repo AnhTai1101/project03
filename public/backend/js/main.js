@@ -1538,7 +1538,7 @@
         }
       });
     }
-    $(".js-item-menu, .js-dropdown").click(function (event) {
+    $(".js-item-menu, .js-dropdown , add-category").click(function (event) {
       event.stopPropagation();
     });
 

@@ -29,12 +29,13 @@
                         <td data-th="Price">{{ number_format($product->price_unit) }} .đ</td>
                         <td data-th="Subtotal" class="text-center">{{ $product->price_promotion == 0 ? '0' : $product->price_promotion   }} .đ</td>
                         <td data-th="Quantity">
-                            <input type="number" class="form-control text-center" value="{{ $total }}">
+                            <input type="number" class="form-control text-center" value="{{ $product->Quantity }}">
                         </td>
                         
                         <td class="actions" data-th="">
-                            <button class="btn btn-info btn-sm"><i class="fa fa-refresh"></i></button>
-                            <button class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i></button>								
+                            <a href="{{ route('edit-product',$product->id ) }}"><button class="btn btn-info btn-sm"><i class="fa fa-refresh"></i></button>
+                            </a>
+                            <a href="{{ route('delete-product',$product->id) }}"><button class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i></button></a>
                         </td>
                     </tr>
                 </tbody>

@@ -25,8 +25,8 @@
             </div>
             
             <div class="form-group">
-                <label for="price">Giá khuyến mại:</label>
-                <input name="price_promotion" type="number"> .đ
+                <label for="price_promotion">Giá khuyến mại:</label>
+                <input value="0" id="price_promotion" name="price_promotion" type="number"> .đ
             </div>
             <div class="form-group">
                 <label for="content">Thông tin giới thiệu</label>
