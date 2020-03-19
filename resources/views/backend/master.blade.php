@@ -155,7 +155,7 @@
                             <i class="fas fa-table"></i>Danh mục sản phẩm</a>
                     </li>
                     <li>
-                        <a href="{{ route('home-category') }}">
+                        <a href="{{ route('home-type') }}">
                             <i class="fas fa-table"></i>Danh sách thể loại</a>
                     </li>
                     <li>

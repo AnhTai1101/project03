@@ -28,8 +28,34 @@ class CategoryController extends Controller
         $type->save();
         return redirect(route('home-category'));
     }
+    // -- end add category
+    //--
+    //-- edit category
+    public function edit($id)
+    {
+        dd($id);
+        $user = Auth::user();
+        $type = Type_product::where('id',$id)->first();
+        return view('backend\Category\edit_category',compact('user','type'));
+    }
+    public function go_edit(Request $req){
+        // dd($req);
+        $type = Type_product::where('id',$req->id)->first();
+        $type->name = $req->name;
+        $type->title = $req->title;
+        $type->save();
+        return redirect(route('home-category'));
+    }
+
     public function add()
     {
         return view('backend\Category\add_category');
+    }
+    // -- 
+    // delete category
+    public function delete($id)
+    {
+        $type = Type_product::where('id',$id)->first()->delete();
+        return redirect(route('home-category'));
     }
 }

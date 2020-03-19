@@ -82,7 +82,7 @@ class ProductController extends Controller
     // edit product
     public function go_edit(ValidateForm $req)
     {
-        dd($req->price_promotion);
+        // dd($req->price_promotion);
         $edit = 0;
 
         //------

@@ -10,10 +10,15 @@ use App\Role;
 
 class HomeController extends Controller
 {
+    // home
     public function home(){
+        $products = Product::paginate(16);
         $slide = slide::all();
-        return view('frontend\home.home',compact('slide'));
+        return view('frontend\home.home',compact('slide','products'));
     }
+    // end home
+    //---
+    // 
     public function test()
     {
         $roles = Role::all();

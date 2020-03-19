@@ -20,6 +20,13 @@ Route::group(['namespace' => 'frontend'], function () {
         'uses'=>'homeController@home'
     ]);
     Route::get('test', 'homeController@test');
+    Route::get('trang-chi-tiet.html/{id}', [
+        'as'=>'chi-tiet',
+        'uses'=>'productController@detail'
+    ]);
+    Route::get('users/{id}', function ($id) {
+        
+    });
 });
 // -- end frontend
 // ----------
@@ -92,9 +99,18 @@ Route::group(['namespace' => 'Admin'], function () {
                 'as'=>'add-category',
                 'uses'=>'CategoryController@go_add'
             ]);
-            Route::get('edit-category.html', [
+            Route::get('delete-category.html/{id}', [
+                'as'=>'delete-category',
+                'uses'=>'CategoryController@delete'
+            ]);
+            // Route::get('edit-category.html/{id}', [
+            //     'as'=>'edit-category',
+            //     'uses'=>'CategoryController@edit'
+            // ]);
+            // Route::get('users/{id}', 'CategoryController@edit')->name('edit-category');
+            Route::post('edit-category.html', [
                 'as'=>'edit-category',
-                'uses'=>'CategoryController@edit'
+                'uses'=>'CategoryController@go_edit'
             ]);
 
         });
@@ -105,6 +121,14 @@ Route::group(['namespace' => 'Admin'], function () {
             Route::get('home-type.html', [
                 'as'=>'home-type',
                 'uses'=>'TypeController@home'
+            ]);
+            Route::post('add-info', [
+                'as'=>'add-info',
+                'uses'=>'TypeController@go_add'
+            ]);
+            Route::get('delete-info.html/{id}', [
+                'as'=>'delete-type',
+                'uses'=>'TypeController@delete'
             ]);
         });
 

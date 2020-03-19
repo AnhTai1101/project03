@@ -1,5 +1,5 @@
 @extends('backend.master')
-@section('title','Trang danh sach danh muc')
+@section('title','Thể loại')
 @section('main')
     {{-- <a href="{{ route('add-category') }}"><button style="margin: 10px;" class="btn badge-info">Thêm danh mục</button></a> --}}
     
@@ -18,7 +18,7 @@
             
                                 <div style="display:none" id="login-alert" class="alert alert-danger col-sm-12"></div>
                                     
-                                <form method="POST" id="loginform" action="{{ route('add-category') }}" class="form-horizontal" role="form">
+                                <form method="POST" id="loginform" action="{{ route('add-info') }}" class="form-horizontal" role="form">
                                     @csrf
                                     <div style="margin-bottom: 20px" class="input-group">
                                         <span class="input-group-addon"><i class="fa fa-text-width" aria-hidden="true"></i></span>
@@ -56,20 +56,20 @@
         </tr>
         </thead>
         <tbody>
-            @foreach ($types as $type)
+            @foreach ($infos as $info)
             <tr>
-                <th scope="row">{{ $type->id }}</th>
-                <td>{{ $type->name }}</td>
-                <td>{{ $type->title }}</td>
+                <th scope="row">{{ $info->id }}</th>
+                <td>{{ $info->name }}</td>
+                <td>{{ $info->title }}</td>
                 <td>
-                    <a href="{{ route('edit-category',$type->id) }}"><button class="btn btn-info btn-sm"><i class="fa fa-refresh"></i></button></a>
+                    <a href="{{ route('edit-category',$info->id) }}"><button class="btn btn-info btn-sm"><i class="fa fa-refresh"></i></button></a>
                     &nbsp;
-                    <a href="{{ route('delete-category',$type->id) }}"><button class="btn btn-danger btn-sm"><i class="fa fa-trash" aria-hidden="true"></i></button></a>
+                    <a href="{{ route('delete-type',$info->id) }}"><button class="btn btn-danger btn-sm"><i class="fa fa-trash" aria-hidden="true"></i></button></a>
                 </td>
             </tr>
             @endforeach
         </tbody>
     </table>
-    {{ $types->links() }}
+    {{ $infos->links() }}
     
 @endsection
